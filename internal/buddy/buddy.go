@@ -27,7 +27,7 @@ type Buddy struct {
 	LastFedAt time.Time `json:"last_fed_at"`
 }
 
-// NewBuddy returns a new Buddy instance initialized in the egg state with full health and current timestamps for creation and last feeding.
+// NewBuddy creates a new buddy in egg state with full health
 func NewBuddy() *Buddy {
 	now := time.Now()
 	return &Buddy{
@@ -49,13 +49,9 @@ func (b *Buddy) Hatch() error {
 }
 
 // Feed restores the buddy's health to full and updates LastFedAt
-func (b *Buddy) Feed() error {
-	if !b.IsAlive() {
-		return errors.New("死亡したbuddyに餌を与えることはできません")
-	}
+func (b *Buddy) Feed() {
 	b.Health = 100
 	b.LastFedAt = time.Now()
-	return nil
 }
 
 // Age returns how long the buddy has been alive
@@ -75,22 +71,19 @@ func (b *Buddy) Validate() error {
 	case StateEgg, StateHatched:
 		// Valid states
 	default:
+		return errors.New("不正な状態です")
+	}
+
+	// Validate health
+	if b.Health < 0 || b.Health > 100 {
+		return errors.New("健康状態は0-100の範囲である必要があります")
+	}
+
 	// Validate timestamps
 	if b.CreatedAt.IsZero() {
 		return errors.New("作成日時が設定されていません")
 	}
 
-	if b.LastFedAt.IsZero() {
-		return errors.New("最後の餌やり時刻が設定されていません")
-	}
-
-	if b.LastFedAt.Before(b.CreatedAt) {
-		return errors.New("LastFedAt は CreatedAt 以前にはできません")
-	}
-
-	if time.Now().Before(b.CreatedAt) {
-		return errors.New("CreatedAt が未来の日付になっています")
-	}
 	if b.LastFedAt.IsZero() {
 		return errors.New("最後の餌やり時刻が設定されていません")
 	}
