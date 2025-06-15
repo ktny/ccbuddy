@@ -24,8 +24,6 @@ linters:
     - gosec          # Security issues
 
 linters-settings:
-  revive:
-    min-confidence: 0.8
   gosec:
     excludes:
       - G104  # Allow unchecked errors in some cases
