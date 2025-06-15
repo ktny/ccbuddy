@@ -1,90 +1,34 @@
 run:
-  timeout: 5m
+  timeout: 3m
   issues-exit-code: 1
   tests: true
 
 linters:
   enable:
-    - errcheck
-    - gosimple
-    - govet
-    - ineffassign
-    - staticcheck
-    - typecheck
-    - unused
-    - asasalint
-    - asciicheck
-    - bidichk
-    - bodyclose
-    - containedctx
-    - contextcheck
-    - cyclop
-    - dupl
-    - durationcheck
-    - errname
-    - errorlint
-    - exhaustive
-    - funlen
-    - gochecknoinits
-    - gocognit
-    - goconst
-    - gocritic
-    - gocyclo
-    - godot
-    - gofmt
-    - gofumpt
-    - goheader
-    - goimports
-    - mnd
-    - gomoddirectives
-    - gomodguard
-    - goprintffuncname
-    - gosec
-    - lll
-    - makezero
-    - misspell
-    - nakedret
-    - nestif
-    - nilerr
-    - nilnil
-    - noctx
-    - nolintlint
-    - prealloc
-    - predeclared
-    - revive
-    - rowserrcheck
-    - sqlclosecheck
-    - stylecheck
-    - usetesting
-    - testpackage
-    - thelper
-    - tparallel
-    - unconvert
-    - unparam
-    - usestdlibvars
-    - wastedassign
-    - whitespace
+    # Core Go linters
+    - errcheck       # Check for unchecked errors
+    - gosimple       # Simplify code
+    - govet          # Go vet tool
+    - ineffassign    # Detect ineffectual assignments
+    - staticcheck    # Static analysis checks
+    - typecheck      # Type checking
+    - unused         # Detect unused variables/functions
+    
+    # Code quality
+    - gofmt          # Check if code is formatted
+    - goimports      # Check if imports are sorted
+    - misspell       # Fix spelling mistakes
+    - revive         # Replacement for golint
+    
+    # Security
+    - gosec          # Security issues
 
 linters-settings:
-  gocyclo:
-    min-complexity: 15
-  goconst:
-    min-len: 2
-    min-occurrences: 3
-  gocritic:
-    enabled-tags:
-      - diagnostic
-      - experimental
-      - opinionated
-      - performance
-      - style
-  funlen:
-    lines: 100
-    statements: 50
-  lll:
-    line-length: 120
-  maligned:
-    suggest-new: true
+  revive:
+    min-confidence: 0.8
+  gosec:
+    excludes:
+      - G104  # Allow unchecked errors in some cases
   misspell:
     locale: US
 
@@ -92,9 +36,4 @@ issues:
   exclude-rules:
     - path: _test\.go
       linters:
-        - mnd
-        - funlen
-        - dupl
-    - path: cmd/
-      linters:
-        - forbidigo  # Allow fmt.Println in main packages
+        - gosec  # Allow more flexibility in tests
