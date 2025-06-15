@@ -1,0 +1,37 @@
+run:
+  timeout: 3m
+  issues-exit-code: 1
+  tests: true
+
+linters:
+  enable:
+    # Core Go linters
+    - errcheck       # Check for unchecked errors
+    - gosimple       # Simplify code
+    - govet          # Go vet tool
+    - ineffassign    # Detect ineffectual assignments
+    - staticcheck    # Static analysis checks
+    - typecheck      # Type checking
+    - unused         # Detect unused variables/functions
+    
+    # Code quality
+    - gofmt          # Check if code is formatted
+    - goimports      # Check if imports are sorted
+    - misspell       # Fix spelling mistakes
+    - revive         # Replacement for golint
+    
+    # Security
+    - gosec          # Security issues
+
+linters-settings:
+  gosec:
+    excludes:
+      - G104  # Allow unchecked errors in some cases
+  misspell:
+    locale: US
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gosec  # Allow more flexibility in tests

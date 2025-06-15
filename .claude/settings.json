@@ -1,0 +1,174 @@
+{
+  "permissions": {
+    "allow": [
+      // Go development tools
+      "Bash(go:*)",
+      "Bash(gofmt:*)",
+      "Bash(goimports:*)",
+      "Bash(golangci-lint:*)",
+      
+      // Build and development tools
+      "Bash(make:*)",
+      
+      // Git operations (restricted)
+      "Bash(git status)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push origin:*)",
+      "Bash(git pull)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git stash:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git tag:*)",
+      "Bash(gh:*)",
+      
+      // Basic file operations
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(echo:*)",
+      "Bash(which:*)",
+      "Bash(pwd)",
+      "Bash(cd:*)",
+      "Bash(tree:*)",
+      
+      // Text processing
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(awk:*)",
+      "Bash(sed:*)",
+      
+      // Archive operations
+      "Bash(tar:*)",
+      "Bash(gzip:*)",
+      "Bash(gunzip:*)",
+      "Bash(unzip:*)",
+      
+      // System info (safe commands only)
+      "Bash(whoami)",
+      "Bash(env)",
+      "Bash(date:*)",
+      
+      // File editing permissions
+      "Read(**)",
+      "Edit(./**)",
+      "Edit(!.git/**)",
+      "Edit(!target/**)",
+      "Edit(!dist/**)",
+      "Edit(!build/**)",
+      "Edit(!coverage/**)",
+      "Write(./**)",
+      "Write(!.git/**)",
+      "Write(!target/**)",
+      "Write(!dist/**)",
+      "Write(!build/**)",
+      "Write(!coverage/**)",
+      "MultiEdit(./**)",
+      "MultiEdit(!.git/**)",
+      "MultiEdit(!target/**)",
+      "MultiEdit(!dist/**)",
+      "MultiEdit(!build/**)",
+      "MultiEdit(!coverage/**)",
+      
+      // Search and analysis tools
+      "Grep(**)",
+      "Glob(**)",
+      "LS(**)",
+      
+      // Todo and task management
+      "TodoRead(**)",
+      "TodoWrite(**)",
+      "Task(**)"
+    ],
+    "deny": [
+      // Dangerous system operations
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(rm -rf /*)",
+      "Bash(sudo:*)",
+      "Bash(dd:*)",
+      "Bash(mkfs:*)",
+      "Bash(fdisk:*)",
+      "Bash(mount:*)",
+      "Bash(umount:*)",
+      "Bash(> /dev/*)",
+      "Bash(>> /dev/*)",
+      
+      // Permission changes
+      "Bash(chmod 777:*)",
+      "Bash(chown root:*)",
+      
+      // Dangerous downloads
+      "Bash(curl * | sh)",
+      "Bash(curl * | bash)",
+      "Bash(wget * | sh)",
+      "Bash(wget * | bash)",
+      
+      // Git force operations
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard HEAD~*)",
+      "Bash(rm -rf .git)",
+      
+      // Network access (ccbuddy doesn't need it initially)
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      
+      // System file editing
+      "Edit(/etc/**)",
+      "Edit(/usr/**)",
+      "Edit(/var/**)",
+      "Edit(/opt/**)",
+      "Edit(/bin/**)",
+      "Edit(/sbin/**)",
+      "Edit(/lib/**)",
+      "Edit(/boot/**)",
+      "Edit(/proc/**)",
+      "Edit(/sys/**)",
+      "Edit(/dev/**)",
+      "Edit(~/.ssh/id_*)",
+      "Edit(~/.ssh/*_rsa)",
+      "Edit(~/.ssh/*_ecdsa)",
+      "Edit(~/.ssh/*_ed25519)",
+      "Edit(/etc/passwd)",
+      "Edit(/etc/shadow)",
+      "Edit(/etc/sudoers)",
+      
+      // System file writing
+      "Write(/etc/**)",
+      "Write(/usr/**)",
+      "Write(/var/**)",
+      "Write(/opt/**)",
+      "Write(/bin/**)",
+      "Write(/sbin/**)",
+      "Write(/lib/**)",
+      "Write(/boot/**)",
+      "Write(/proc/**)",
+      "Write(/sys/**)",
+      "Write(/dev/**)",
+      "Write(~/.ssh/id_*)",
+      "Write(~/.ssh/*_rsa)",
+      "Write(~/.ssh/*_ecdsa)",
+      "Write(~/.ssh/*_ed25519)",
+      "Write(/etc/passwd)",
+      "Write(/etc/shadow)",
+      "Write(/etc/sudoers)"
+    ]
+  }
+}
