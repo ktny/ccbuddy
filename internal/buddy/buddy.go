@@ -27,7 +27,7 @@ type Buddy struct {
 	LastFedAt time.Time `json:"last_fed_at"`
 }
 
-// NewBuddy creates a new buddy in egg state with full health
+// NewBuddy returns a new Buddy instance initialized in the egg state with full health and current timestamps for creation and last feeding.
 func NewBuddy() *Buddy {
 	now := time.Now()
 	return &Buddy{
