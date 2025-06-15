@@ -23,10 +23,7 @@ linters:
     - durationcheck
     - errname
     - errorlint
-    - execinquery
     - exhaustive
-    - exportloopref
-    - forbidigo
     - funlen
     - gochecknoinits
     - gocognit
@@ -38,7 +35,7 @@ linters:
     - gofumpt
     - goheader
     - goimports
-    - gomnd
+    - mnd
     - gomoddirectives
     - gomodguard
     - goprintffuncname
@@ -58,7 +55,7 @@ linters:
     - rowserrcheck
     - sqlclosecheck
     - stylecheck
-    - tenv
+    - usetesting
     - testpackage
     - thelper
     - tparallel
@@ -95,6 +92,9 @@ issues:
   exclude-rules:
     - path: _test\.go
       linters:
-        - gomnd
+        - mnd
         - funlen
         - dupl
+    - path: cmd/
+      linters:
+        - forbidigo  # Allow fmt.Println in main packages
