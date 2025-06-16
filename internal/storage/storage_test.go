@@ -12,11 +12,6 @@ import (
 func TestNewStore(t *testing.T) {
 	store := NewStore()
 
-	if store == nil {
-		t.Error("NewStore()はnilを返すべきではない")
-		return
-	}
-
 	if store.configDir == "" {
 		t.Error("configDirが設定されていない")
 	}
@@ -25,7 +20,7 @@ func TestNewStore(t *testing.T) {
 func TestStoreSaveBuddy(t *testing.T) {
 	// テスト用の一時ディレクトリを作成
 	tempDir := t.TempDir()
-	store := &Store{configDir: tempDir}
+	store := Store{configDir: tempDir}
 
 	buddy := &buddy.Buddy{
 		State:     buddy.StateEgg,
@@ -49,7 +44,7 @@ func TestStoreSaveBuddy(t *testing.T) {
 func TestStoreLoadBuddy(t *testing.T) {
 	// テスト用の一時ディレクトリを作成
 	tempDir := t.TempDir()
-	store := &Store{configDir: tempDir}
+	store := Store{configDir: tempDir}
 
 	originalBuddy := &buddy.Buddy{
 		State:     buddy.StateHatched,
@@ -92,7 +87,7 @@ func TestStoreLoadBuddy(t *testing.T) {
 func TestStoreLoadBuddyNotExists(t *testing.T) {
 	// テスト用の一時ディレクトリを作成（ファイルなし）
 	tempDir := t.TempDir()
-	store := &Store{configDir: tempDir}
+	store := Store{configDir: tempDir}
 
 	buddy, err := store.LoadBuddy()
 	if err == nil {
@@ -107,7 +102,7 @@ func TestStoreLoadBuddyNotExists(t *testing.T) {
 func TestStoreBuddyExists(t *testing.T) {
 	// テスト用の一時ディレクトリを作成
 	tempDir := t.TempDir()
-	store := &Store{configDir: tempDir}
+	store := Store{configDir: tempDir}
 
 	// ファイルが存在しない場合
 	if store.BuddyExists() {
@@ -135,7 +130,7 @@ func TestStoreBuddyExists(t *testing.T) {
 func TestStoreInvalidJSON(t *testing.T) {
 	// テスト用の一時ディレクトリを作成
 	tempDir := t.TempDir()
-	store := &Store{configDir: tempDir}
+	store := Store{configDir: tempDir}
 
 	// 無効なJSONファイルを作成
 	filePath := filepath.Join(tempDir, "buddy.json")

@@ -19,9 +19,8 @@ func TestNewModel(t *testing.T) {
 		t.Error("新しいモデルはbuddyを持たないべき")
 	}
 
-	if model.store == nil {
-		t.Error("新しいモデルはstoreを持つべき")
-	}
+	// storeは値型なのでnilチェックは不要
+	// configDirが設定されているかは別のテストで確認
 }
 
 func TestModelDisplayWithNoBuddy(t *testing.T) {

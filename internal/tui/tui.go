@@ -13,14 +13,15 @@ import (
 // Model represents the TUI application state
 type Model struct {
 	buddy *buddy.Buddy
-	store *storage.Store
+	store storage.Store
 	err   error
 }
 
 // NewModel creates a new TUI model
 func NewModel() *Model {
+	store := storage.NewStore()
 	return &Model{
-		store: storage.NewStore(),
+		store: store,
 	}
 }
 

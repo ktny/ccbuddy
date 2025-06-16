@@ -15,7 +15,7 @@ type Store struct {
 }
 
 // NewStore creates a new storage instance with default config directory
-func NewStore() *Store {
+func NewStore() Store {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		// フォールバック: カレントディレクトリに.ccbuddyディレクトリを作成
@@ -23,7 +23,7 @@ func NewStore() *Store {
 	}
 
 	configDir := filepath.Join(homeDir, ".ccbuddy")
-	return &Store{
+	return Store{
 		configDir: configDir,
 	}
 }
